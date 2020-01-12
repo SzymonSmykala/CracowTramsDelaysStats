@@ -12,4 +12,10 @@ class Vehicle(object):
         self.status = status
         self.planned_time = planned_time
         self.trip_id = trip_id
-        self.actual_time = actual_time
+        if actual_time == '':
+            self.actual_time = planned_time
+        else:
+            self.actual_time = actual_time
+
+    def to_string(self):
+        return f"{self.direction} {self.line_id} {self.status} {self.planned_time} {self.trip_id} {self.actual_time}"
