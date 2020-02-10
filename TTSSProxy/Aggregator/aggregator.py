@@ -1,4 +1,4 @@
-from Aggregator.StopInfoDataController import StopInfoDataController
+from Aggregator.Controllers.StopInfoDataController import StopInfoDataController
 
 if __name__ == '__main__':
     stopdata = StopInfoDataController()

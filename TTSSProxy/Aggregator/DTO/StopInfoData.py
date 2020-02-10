@@ -1,4 +1,4 @@
-from Aggregator.Vehicle import Vehicle
+from Aggregator.DTO.Vehicle import Vehicle
 
 
 class StopInfoData(object):

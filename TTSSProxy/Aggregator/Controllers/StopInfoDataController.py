@@ -3,8 +3,8 @@ import json
 import requests # TODO: must be installed
 
 from Aggregator import backend_endpoints
-from Aggregator.StopInfoData import StopInfoData
-from Aggregator.Vehicle import Vehicle
+from Aggregator.DTO.StopInfoData import StopInfoData
+from Aggregator.DTO.Vehicle import Vehicle
 
 
 class StopInfoDataController(object):
