@@ -3,7 +3,7 @@ import json
 import requests
 
 from Aggregator.DTO.Stop import Stop
-from Aggregator.backend_endpoints import BackendEndpoints
+from backend_endpoints import BackendEndpoints
 
 
 class StopsDataController(object):
