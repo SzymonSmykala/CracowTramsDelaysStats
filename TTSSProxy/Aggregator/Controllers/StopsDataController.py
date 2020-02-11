@@ -19,6 +19,17 @@ class StopsDataController(object):
         return False
 
     @staticmethod
+    def get_stop_id(stop_name):
+        url = BackendEndpoints.all_stops_data
+        response = requests.get(url)
+        objects = json.loads(response.text)
+        list = StopsDataController.deserialize(objects)
+        for stop in list:
+            if stop.stop_name == stop_name:
+                return stop.stop_id
+        return False
+
+    @staticmethod
     def deserialize(objects):
         stops = objects["stops"]
         result = []

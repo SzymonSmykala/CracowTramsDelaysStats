@@ -18,4 +18,5 @@ class Vehicle(object):
             self.actual_time = actual_time
 
     def to_string(self):
-        return f"{self.direction} {self.line_id} {self.status} {self.planned_time} {self.trip_id} {self.actual_time}"
+        direction_no_spaces = self.direction.replace(" ", "")
+        return f"{direction_no_spaces} {self.line_id} {self.status} {self.planned_time} {self.trip_id} {self.actual_time}"
