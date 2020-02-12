@@ -2,6 +2,7 @@ use open ':std', ':encoding(UTF-8)';
 use File::Basename;
 use lib dirname (__FILE__) . "/";
 use vehicle;
+use staticticsCalculator;
 
 foreach (@ARGV) {
     $current_file = $_;
@@ -14,17 +15,18 @@ foreach (@ARGV) {
             $temp_vehicle = new vehicle($splitted[0], $splitted[1],$splitted[2],$splitted[3],$splitted[4],$splitted[5]);
             $temp_vehicle->get_delay_in_minutes();
             $trip_id = $temp_vehicle->get_trip_id();
-            print "tripid:", $temp_vehicle->get_trip_id() , "\n" ;
-            $vehicles->{$temp_vehicle->get_trip_id()} = $temp_vehicle;
-           
+            $vehicles{$trip_id} = $temp_vehicle;
+            # print "Added vehicle key: ", $trip_id,"value:", $vehicles{$trip_id}->toString(), "\n";
         }
     }
     else
     {
         warn "Could not open file '$filename' $!";
     }
-
-    while ( ($k,$v) = each %vehicles ) {
-        print "$k\n";
+     foreach my $key (sort(keys %vehicles)) {
+        print $key, '=>>>>>>', $vehicles{$key}, "\n";
     }
+    $calculator = new staticticsCalculator(%vehicles);
+    $calculator->print_line_ranking();
+
 }

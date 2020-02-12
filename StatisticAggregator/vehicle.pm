@@ -38,4 +38,9 @@ sub get_trip_id {
     return $self->{_trip_id};
 }
 
+sub get_line_id {
+    my ( $self ) = @_;
+    return $self->{_line_id};
+}
+
 1;
