@@ -6,7 +6,7 @@ use staticticsCalculator;
 
 foreach (@ARGV) {
     $current_file = $_;
-    %vehicles = [];
+    %vehicles;
 
     if (open(my $fh, '<:encoding(UTF-8)', $current_file)) {
         while (my $row = <$fh>) {
@@ -16,17 +16,18 @@ foreach (@ARGV) {
             $temp_vehicle->get_delay_in_minutes();
             $trip_id = $temp_vehicle->get_trip_id();
             $vehicles{$trip_id} = $temp_vehicle;
-            # print "Added vehicle key: ", $trip_id,"value:", $vehicles{$trip_id}->toString(), "\n";
+            # print "Added vehicle key: ", $trip_id," value:", $vehicles{$trip_id}->toString(), "\n";
         }
     }
     else
     {
         warn "Could not open file '$filename' $!";
     }
-     foreach my $key (sort(keys %vehicles)) {
-        print $key, '=>>>>>>', $vehicles{$key}, "\n";
+     foreach my $key (keys %vehicles) {
+        # print $key, '=>>>>>>';
+        # print $vehicles{$key}->toString(),  "\n";
     }
-    $calculator = new staticticsCalculator(%vehicles);
-    $calculator->print_line_ranking();
+    $calculator = new staticticsCalculator();
+    $calculator->print_line_ranking(%vehicles);
 
 }
