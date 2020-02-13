@@ -4,6 +4,18 @@ use lib dirname (__FILE__) . "/";
 use vehicle;
 use staticticsCalculator;
 
+if( $ARGV[0] eq '-h' || $ARGV[0] eq '-help')
+{
+    print "************************************************************\n";
+    print "This is statistcs aggregator. It takes output from python script (TTSSProxy/aggregator.py) and process it.\n";
+    print "!!! This is not full program. Use /Client/client.sh instead !!!!!";
+    print "Arguments: \n";
+    print "-h, -help -> Displays help\n";
+    print "<noarguments> pathToDataFile -> process *.data file and displays statistics. \n";
+    print "************************************************************\n";
+    exit;
+}
+
 foreach (@ARGV) {
     $current_file = $_;
     %vehicles;
@@ -16,17 +28,13 @@ foreach (@ARGV) {
             $temp_vehicle->get_delay_in_minutes();
             $trip_id = $temp_vehicle->get_trip_id();
             $vehicles{$trip_id} = $temp_vehicle;
-            # print "Added vehicle key: ", $trip_id," value:", $vehicles{$trip_id}->toString(), "\n";
         }
     }
     else
     {
         warn "Could not open file '$filename' $!";
     }
-     foreach my $key (keys %vehicles) {
-        # print $key, '=>>>>>>';
-        # print $vehicles{$key}->toString(),  "\n";
-    }
+
     $calculator = new staticticsCalculator();
     $calculator->print_line_ranking(%vehicles);
 
