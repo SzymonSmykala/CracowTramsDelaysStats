@@ -8,7 +8,7 @@ if( $ARGV[0] eq '-h' || $ARGV[0] eq '-help')
 {
     print "************************************************************\n";
     print "This is statistcs aggregator. It takes output from python script (TTSSProxy/aggregator.py) and process it.\n";
-    print "!!! This is not full program. Use /Client/client.sh instead !!!!!";
+    print "!!! This is not full program. Use /Client/client.sh instead !!!!!\n";
     print "Arguments: \n";
     print "-h, -help -> Displays help\n";
     print "<noarguments> pathToDataFile -> process *.data file and displays statistics. \n";

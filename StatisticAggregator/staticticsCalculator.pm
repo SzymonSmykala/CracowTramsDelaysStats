@@ -19,7 +19,6 @@ sub print_line_ranking {
 
     while ( ($k,$v) = each %vehicles ) {
         $v = $vehicles{$k};
-        # print "$k => ", $v->toString(), "\n";
         my $line_id = $v->get_line_id();
         my $current_line;
         if (exists($lines{$line_id}))
@@ -28,8 +27,6 @@ sub print_line_ranking {
         }else{
             $current_line = new line($line_id);
         }
-        print $v->toString(), "\n";
-        print "Delay in minutes: ", $v->get_delay_in_minutes(), "\n";
         $current_line->add_delay($v->get_delay_in_minutes());
         $lines{$line_id} = $current_line;
     }
