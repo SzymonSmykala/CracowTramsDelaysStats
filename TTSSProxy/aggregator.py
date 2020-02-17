@@ -2,7 +2,7 @@
 # Szymon Smykala
 import sys
 
-if sys.argv[1] == "-h" or sys.argv == "--help":
+if sys.argv[1] == "-h" or sys.argv[1] == "--help":
     print("******************************************************")
     print("This script pulls data from http://ttss.krakow.pl and saves it in *.data file")
     print("!!! This is not full program. Use /Client/client.sh instead !!!!!")
