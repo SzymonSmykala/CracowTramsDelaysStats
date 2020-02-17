@@ -1,6 +1,14 @@
+#!/bin/bash
 # Szymon Smykala
 
-if [ $1 == "-h" ] || [ $1 == "--help" ]
+help=$1
+
+if [ -z "$1" ]
+then
+    help="z"
+fi
+
+if [ $help == "-h" ] || [ $help == "--help" ]
 then
     echo "*********************************************************************************"
     echo "This script analyses averange delays of each line on provided tram stop in Krakow"
@@ -12,7 +20,7 @@ then
     exit 0
 fi 
 
-echo "Chech if stop exists"
+echo "Write stop name. For example: (Ruczaj, Norymberska)" 
 
 read stop_to_check
 cd "$(dirname "$0")"

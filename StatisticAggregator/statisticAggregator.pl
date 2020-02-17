@@ -1,10 +1,12 @@
+#!/usr/bin/perl
+# Szymon Smykala
 use open ':std', ':encoding(UTF-8)';
 use File::Basename;
 use lib dirname (__FILE__) . "/";
 use vehicle;
 use staticticsCalculator;
 
-if( $ARGV[0] eq '-h' || $ARGV[0] eq '-help')
+if( $ARGV[0] eq '-h' || $ARGV[0] eq '--help')
 {
     print "************************************************************\n";
     print "This is statistcs aggregator. It takes output from python script (TTSSProxy/aggregator.py) and process it.\n";

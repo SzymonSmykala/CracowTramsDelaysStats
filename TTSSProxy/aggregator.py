@@ -1,8 +1,6 @@
+#!/usr/bin/python3
 # Szymon Smykala
 import sys
-
-from Aggregator.Controllers.StopInfoDataController import StopInfoDataController
-from Aggregator.Controllers.StopsDataController import StopsDataController
 
 if sys.argv[1] == "-h" or sys.argv == "--help":
     print("******************************************************")
@@ -12,7 +10,13 @@ if sys.argv[1] == "-h" or sys.argv == "--help":
     print("-h, --help -> Displays help")
     print("-e tramStopName -> checks if tram stop exists, returns True or False")
     print("-r tramStopName -> pulls current data about provided tram stop")
+    print("Required modules: ")
+    print("- requests (Try pip3 install requests)")
     print("******************************************************")
+
+from Aggregator.Controllers.StopInfoDataController import StopInfoDataController
+from Aggregator.Controllers.StopsDataController import StopsDataController
+
 
 if __name__ == '__main__':
 
