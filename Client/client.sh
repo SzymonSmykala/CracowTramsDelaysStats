@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/
 # Szymon Smykala
 
 help=$1
@@ -25,7 +25,7 @@ echo "Write stop name. For example: (Ruczaj, Norymberska)"
 read stop_to_check
 cd "$(dirname "$0")"
 echo "Checking if $stop_to_check exists..."
-result=$(python3 ../TTSSProxy/aggregator.py -e $stop_to_check)
+result=$(python3 ../TTSSProxy/aggregator.py -e "$stop_to_check")
 
 if [ $result == "True" ]
 then
@@ -52,19 +52,19 @@ then
         if (( m == 0 ))
         then
             echo "Pulling Data..."
-            result=$(python3 ../TTSSProxy/aggregator.py -r $stop_to_check)
+            result=$(python3 ../TTSSProxy/aggregator.py -r "$stop_to_check")
         fi
         sleep 1
     done 
     
-    perl ../StatisticAggregator/statisticAggregator.pl $stop_to_check.data
+    perl ../StatisticAggregator/statisticAggregator.pl "$stop_to_check".data
 
     echo 
     echo "Delete datafile $stop_to_check.data? (y/n)"
     read delete_answer
     if [ $delete_answer == "y" ]
     then
-        rm $stop_to_check.data
+        rm "$stop_to_check".data
     fi
 
 else
